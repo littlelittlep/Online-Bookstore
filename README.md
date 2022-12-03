@@ -28,11 +28,13 @@
    git push origin master  #推送到远程仓库的master分支
    ```
 
-**注意：**
+**:heavy_exclamation_mark:   注意：**
 
 大致思路就是先add、commit，然后pull，然后push。
 
 实际操作中要以具体报错信息为准！！！
+
+<br/>
 
 参考：
 
