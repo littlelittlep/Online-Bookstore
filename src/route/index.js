@@ -1,4 +1,3 @@
-import App from '../App'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Home from "../pages/Home"
@@ -23,7 +22,7 @@ const BaseRouter = () => (
             <Route path='/order' element={<Order />}></Route>
             <Route path='/shopcar' element={<Shopcar />}></Route>
             <Route path='/center' element={<Center />}></Route>
-            <Route path='/admin' element={<App />}>
+            <Route path='/admin'>
                 <Route path='/admin/user-list' element={<UserList />} />
                 <Route path='/admin/book-list' element={<BookList />} />
                 <Route path='/admin/order-list' element={<OrderList />} />

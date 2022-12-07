@@ -5,5 +5,4 @@ import Router from './route'
 const root = createRoot(document.getElementById('root'))
 root.render(
     <Router />
-
 )

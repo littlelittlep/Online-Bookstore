@@ -16,38 +16,10 @@ export default function Login() {
             userId: values.username,
             userPassword: values.password,
         }).then(res => {
-            // console.log(values.username);
-            // console.log(res)
-
-            // if (res.errorCode === 0) {
-            //     message.success(res.message)
-            //     //存储数据
-            //     // localStorage.setItem('avatar', res.data.avatar)
-            //     // localStorage.setItem('cms-token', res.data['cms-token'])
-            //     // localStorage.setItem('editable', res.data.editable)
-            //     localStorage.setItem('userId', res.data.userId)
-            //     localStorage.setItem('userName', res.data.userName)
-            //     let userType = res.data.userType
-            //     if (userType === "学生") {
-            //         localStorage.setItem('auth', 0)
-            //     }
-            //     if (userType === "教师") {
-            //         localStorage.setItem('auth', 1)
-            //     }
-            //     if(userType === "教务处") {
-            //         localStorage.setItem('auth', 2)
-            //     }
-            //     setTimeout(() => {
-            //         if (userType === "学生")
-            //             navigate('/list')
-            //         if (userType === "教师")
-            //             navigate('/teacher/list')
-            //         if(userType === "教务处")
-            //             navigate('/jwc/list')
-            //     }, 500)
-            // } else {
-            //     message.error(res.message)
-            // }
+            //判断哪种类型
+            //  手机号不存在->提示信息
+            //  手机号存在但密码错误->提示错误
+            //  成功->路由跳转
         })
     };
 
@@ -68,7 +40,7 @@ export default function Login() {
 
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                            <Input placeholder="请输入用户名" prefix={<UserOutlined className="site-form-item-icon" />} size='large' />
+                            <Input placeholder="请输入手机号" prefix={<UserOutlined className="site-form-item-icon" />} size='large' />
                         </Form.Item>
 
                         <Form.Item
