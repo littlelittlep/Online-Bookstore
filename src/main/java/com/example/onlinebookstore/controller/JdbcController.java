@@ -29,7 +29,7 @@ public class JdbcController {
             @Override
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 user = new User();
-                user.setUserName(rs.getString("userName"));
+//                user.setUserName(rs.getString("userName"));
                 user.setPassword(rs.getString("password"));
                 return user;
             }
