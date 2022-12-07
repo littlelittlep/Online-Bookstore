@@ -39,10 +39,9 @@ public class RegisterController {
             }
         });
         if (userList.isEmpty()){
-//            String insertSQL = "INSERT INTO users([MemberID],[Password],[MemberName],[Balance],[IsManager]) Values( "
-//                    + memberID + ", " + password + ", " + memberName + ", " + "0" + "," + "0" +")";
-            String insertSQL = "INSERT INTO users([MemberID],[Password],[MemberName]) VALUES( "
-                    +"\"" + memberID +"\"" + ", " + "\"" + password +"\"" + ", " +"\"" + memberName  +"\"" +")";
+            String insertSQL = "INSERT INTO users Values( "
+                    +"\'"+ memberID + "\'" + ", " + "\'" + password +"\'" + ", " +"\'" + memberName +"\'" + ", " + "0" + "," + "0" +")";
+
             System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
             return "1";
