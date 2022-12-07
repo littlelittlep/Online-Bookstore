@@ -2,8 +2,8 @@ import axios from 'axios'
 
 // 配置项
 const axiosOption = {
-    baseURL: '/api',
-    // baseURL: 'http://1.13.253.88:8080',
+    // baseURL: '',
+    baseURL: 'http://127.0.0.1:8080',
     timeout: 5000
 }
 

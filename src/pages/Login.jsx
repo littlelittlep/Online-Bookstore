@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './less/login.less'
 
 import { LoginApi } from '../request/api';

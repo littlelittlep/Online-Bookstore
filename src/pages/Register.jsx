@@ -1,4 +1,5 @@
-import React from 'react'
+import { React, useState } from 'react'
+import Qs from 'qs'
 import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom'
@@ -13,15 +14,19 @@ export default function Register() {
     const onFinish = (values) => {
         console.log('Success:', values);
 
-        RegisterApi({
-            userName: values.username,
-            userPassword: values.password,
-        }).then(res => {
+        RegisterApi(Qs.stringify({
+            MemberName: values.username,
+            MemberID: values.phone,
+            Password: values.password,
+        })).then(res => {
             console.log(res)
-            //手机号已经存在
-            //...
-            //注册成功，跳转到登录界面
-            //...
+            if (res === "1") {
+                message.success("注册成功！")
+                //注册成功，跳转到登录界面
+                navigate('/login')
+            } else {
+                //手机号已经存在
+            }
         })
     };
 
@@ -39,7 +44,13 @@ export default function Register() {
                     >
                         <Form.Item
                             name="username"
+                            rules={[{ required: true, message: '请输入用户名' }]}
+                        >
+                            <Input placeholder="请输入用户名" prefix={<UserOutlined className="site-form-item-icon" />} size='large' />
+                        </Form.Item>
 
+                        <Form.Item
+                            name="phone"
                             rules={[{ required: true, message: '请输入手机号' }]}
                         >
                             <Input placeholder="请输入手机号" prefix={<UserOutlined className="site-form-item-icon" />} size='large' />
