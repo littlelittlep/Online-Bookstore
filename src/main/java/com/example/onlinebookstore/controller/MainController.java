@@ -25,10 +25,4 @@ public class MainController {
         return books;
     }
 
-    @PostMapping("/login")
-    @ResponseBody
-    public String login(@RequestParam("username") String name,
-                        @RequestParam("password") String password) {
-        return "name: " + name + "\npassword: " + password;
-    }
 }

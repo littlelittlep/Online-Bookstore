@@ -20,7 +20,7 @@ public class RegisterController {
 
     @PostMapping("/register")
     @ResponseBody
-    public String login(@RequestParam("MemberID") String memberID,
+    public String register(@RequestParam("MemberID") String memberID,
                         @RequestParam("Password") String password,
                         @RequestParam("MemberName") String memberName) {
         String sql = "SELECT * FROM users WHERE MemberID="+memberID;
