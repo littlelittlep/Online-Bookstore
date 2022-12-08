@@ -3,7 +3,7 @@ import { Menu } from 'antd';
 import {
     AppstoreAddOutlined, SolutionOutlined, BookOutlined,
     CaretDownOutlined, UserOutlined, ShoppingCartOutlined,
-    TransactionOutlined
+    TransactionOutlined, FormOutlined, TeamOutlined
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -42,7 +42,21 @@ const items = [[
         ]
     },
 ], [
-
+    {
+        key: '1',
+        icon: <BookOutlined />,
+        label: '书籍管理',
+    },
+    {
+        key: '2',
+        icon: <FormOutlined />,
+        label: '订单管理',
+    },
+    {
+        key: '3',
+        icon: <TeamOutlined />,
+        label: '用户管理',
+    },
 ]]
 
 
@@ -69,17 +83,28 @@ export default function Asider() {
     // };
     const clickMenu = (e) => {
         console.log(e.key);
-        if (e.key == 1) {
-            navigate('/books')
-        } else if (e.key == 2) {
-            navigate('/book-classification')
-        } else if (e.key == 4) {
-            navigate('/order')
-        } else if (e.key == 5) {
-            navigate('/shopcar')
-        } else if (e.key == 6) {
-            navigate('/center')
+        if (localStorage.getItem("auth") == 0) {
+            if (e.key == 1) {
+                navigate('/books')
+            } else if (e.key == 2) {
+                navigate('/book-classification')
+            } else if (e.key == 4) {
+                navigate('/order')
+            } else if (e.key == 5) {
+                navigate('/shopcar')
+            } else if (e.key == 6) {
+                navigate('/center')
+            }
+        } else {
+            if (e.key == 1) {
+                navigate('/admin/book-list')
+            } else if (e.key == 2) {
+                navigate('/admin/order-list')
+            } else if (e.key == 3) {
+                navigate('/admin/user-list')
+            }
         }
+
     }
     return (
         <Menu

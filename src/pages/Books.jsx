@@ -9,6 +9,7 @@ const App = () => (
         {new Array(10).fill(null).map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Card
+                key={index}
                 style={{
                     width: 290,
                 }}
