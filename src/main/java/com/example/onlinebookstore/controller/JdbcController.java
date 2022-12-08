@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 @Controller
 @CrossOrigin
 @RequestMapping("/jdbc")

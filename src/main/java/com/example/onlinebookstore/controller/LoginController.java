@@ -39,7 +39,7 @@ public class LoginController  {
         });
         if (userList.isEmpty()){
             return "0";//用户不存在
-        }else if(userList.get(0).getPassword().equals(password)){
+        }else if(userList.get(0).getPassword()==password){
             return "1";//登陆成功
         }else{
             return "2";//密码错误
