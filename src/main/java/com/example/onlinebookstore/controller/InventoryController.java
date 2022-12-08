@@ -4,6 +4,7 @@ import com.example.onlinebookstore.entity.Inventory;
 import jakarta.annotation.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.JdbcUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,10 +54,25 @@ public class InventoryController {
 
             System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
-            return "1";
+            return "1"; //添加成功
         }
         else
-            return "0";
+            return "0";  //书籍ID已经存在
     }
 
+    @PostMapping("/updateRemain")
+    @ResponseBody
+    public String updateRemain(@RequestParam("BookID") String bookID,
+                               @RequestParam("AddNumber") int addNumber){
+        if (addNumber<=0){
+            return "0";   //不能非负
+        }
+        String sql = "BEGIN;\n" +
+                "SELECT BookRemainNum From inventory WHERE BookID="+"\'"+bookID+"\'"+";\n" +
+                "UPDATE Inventory SET BookRemainNum=BookRemainNum+" + addNumber + " WHERE BookID="+"\'"+bookID+"\'"+";\n" +
+                "COMMIT;";
+        System.out.println(sql);
+        jdbcTemplate.execute(sql);
+        return "1";     //更新成功
+    }
 }
