@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import Qs from 'qs'
 import { Form, Input, Button, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom'
 import './less/login.less'
 import { RegisterApi } from '../request/api';
@@ -10,9 +10,8 @@ const logoImg = "http://coseu-nanjing.oss-cn-nanjing.aliyuncs.com/ses/logo.png"
 export default function Register() {
 
     const navigate = useNavigate()
-
     const onFinish = (values) => {
-        console.log('Success:', values);
+        // console.log('Success:', values);
 
         RegisterApi(Qs.stringify({
             MemberName: values.username,
@@ -20,12 +19,15 @@ export default function Register() {
             Password: values.password,
         })).then(res => {
             console.log(res)
-            if (res === "1") {
+            if (res == "1") {
                 message.success("注册成功！")
                 //注册成功，跳转到登录界面
-                navigate('/login')
+                setTimeout(() => {
+                    navigate("/login");
+                }, 800)
             } else {
                 //手机号已经存在
+                message.error("手机号已经存在！")
             }
         })
     };
@@ -53,7 +55,7 @@ export default function Register() {
                             name="phone"
                             rules={[{ required: true, message: '请输入手机号' }]}
                         >
-                            <Input placeholder="请输入手机号" prefix={<UserOutlined className="site-form-item-icon" />} size='large' />
+                            <Input placeholder="请输入手机号" prefix={<PhoneOutlined />} size='large' />
                         </Form.Item>
 
                         <Form.Item
