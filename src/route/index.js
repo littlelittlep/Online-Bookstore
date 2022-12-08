@@ -8,6 +8,8 @@ import Center from "../pages/Center"
 import UserList from "../pages/admin/UserList"
 import BookList from "../pages/admin/BookList"
 import OrderList from "../pages/admin/OrderList"
+import Books from "../pages/Books"
+import App from '../App.jsx'
 
 
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -43,10 +45,10 @@ import {
 
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Home />,
-    },
+    // {
+    //     path: "/",
+    //     element: <Home />,
+    // },
     {
         path: "/login",
         element: <Login />,
@@ -56,24 +58,50 @@ const router = createBrowserRouter([
         element: <Register />,
     },
     {
-        path: "/book-classification",
-        element: <Classification />,
+        path: "/",
+        element: <App />,
+        children: [
+            {
+                path: "books",
+                element: <Books />,
+            },
+            {
+                path: "book-classification",
+                element: <Classification />,
+            },
+            {
+                path: "order",
+                element: <Order />,
+            },
+            {
+                path: "shopcar",
+                element: <Shopcar />,
+            },
+            {
+                path: "center",
+                element: <Center />,
+            },
+        ],
     },
-    {
-        path: "/order",
-        element: <Order />,
-    },
-    {
-        path: "/shopcar",
-        element: <Shopcar />,
-    },
-    {
-        path: "/center",
-        element: <Center />,
-    },
+    // {
+    //     path: "/book-classification",
+    //     element: <Classification />,
+    // },
+    // {
+    //     path: "/order",
+    //     element: <Order />,
+    // },
+    // {
+    //     path: "/shopcar",
+    //     element: <Shopcar />,
+    // },
+    // {
+    //     path: "/center",
+    //     element: <Center />,
+    // },
     {
         path: "/admin",
-        element: <Home />,
+        element: <App />,
         children: [
             {
                 path: "user-list",

@@ -73,6 +73,20 @@ const App = () => {
         />
     )
     const username = localStorage.getItem("username")
+    const clickMenu = (e) => {
+        console.log(e.key);
+        if (e.key == 1) {
+            navigate('/')
+        } else if (e.key == 2) {
+            navigate('/book-classification')
+        } else if (e.key == 4) {
+            navigate('/order')
+        } else if (e.key == 5) {
+            navigate('/shopcar')
+        } else if (e.key == 6) {
+            navigate('/center')
+        }
+    }
     return (
         <Layout>
             <header>
@@ -108,6 +122,7 @@ const App = () => {
                             borderRight: 0,
                         }}
                         items={items2}
+                        onClick={clickMenu}
                     />
                 </Sider>
                 <Layout

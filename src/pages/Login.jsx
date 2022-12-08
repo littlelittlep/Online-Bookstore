@@ -24,6 +24,7 @@ export default function Login() {
             if (res == "1") {
                 message.success("登录成功！")
                 localStorage.setItem("username", values.username)
+                localStorage.setItem("auth", 0)//undone,鉴权
                 //注册成功，跳转到首页
                 setTimeout(() => {
                     navigate("/");

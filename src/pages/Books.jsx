@@ -5,7 +5,7 @@ const { Meta } = Card;
 
 const bookName = ["数据库原理", "计算机网络", "数据结构", "算法设计", "编译原理", "操作系统", "程序设计基础", "大数据处理", "云计算", "数据挖掘"]
 const App = () => (
-    <Space size={[8, 16]} wrap>
+    <Space size={[16, 16]} wrap >
         {new Array(10).fill(null).map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Card
