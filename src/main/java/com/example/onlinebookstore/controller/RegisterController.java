@@ -46,9 +46,9 @@ public class RegisterController {
 
             System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
-            return "1";
+            return "1";//注册成功
         }
         else
-            return "0";
+            return "0";//手机号已存在
     }
 }
