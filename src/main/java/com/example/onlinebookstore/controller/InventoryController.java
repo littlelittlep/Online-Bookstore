@@ -33,7 +33,7 @@ public class InventoryController {
                           @RequestParam("BookPicture") String bookPicture,
                           @RequestParam("BookNote") String bookNote) {
         String sql = "SELECT * FROM inventory WHERE BookID="+"\'"+bookID+"\'";
-        System.out.println(sql);
+//        System.out.println(sql);
         List<Inventory> inventoryList = jdbcTemplate.query(sql, new RowMapper<Inventory>() {
             Inventory inventory = null;
 
@@ -53,10 +53,10 @@ public class InventoryController {
 
             System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
-            return "1";
+            return "1";//添加图书成功
         }
         else
-            return "0";
+            return "0";//添加失败
     }
 
 }
