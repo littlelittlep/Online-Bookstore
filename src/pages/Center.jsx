@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Button,  Row,Space,Col,Card,Menu, Avatar, List, message,Divider,Descriptions,Table,Tag} 
+import React, { useEffect, useState} from 'react';
+import { Button,  Row,Space,Col,Card,Menu, Avatar, List, message,Divider,Descriptions,Table,Tag,Modal,Input,Form,Checkbox} 
 from 'antd';
-
 const fakeDataUrl =
   'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
 const ContainerHeight = 400;
@@ -43,7 +42,7 @@ const data = [
         tags: [],
       },
   ];
-  const columns = [
+const columns = [
     {
       title: '收货人',
       dataIndex: 'name',
@@ -91,10 +90,58 @@ const data = [
           </Space>
         ),
       },
-    ];
-const clickInfo = (e) => {
-}
+  ];
+// 
 const App = () => {
+    const CollectionCreateForm = ({ visible, submitMap,onCancel, currentDetailData }) => {
+      const [form] = Form.useForm();
+      const layout = {
+          labelCol: { span: 5 },
+          wrapperCol: { span: 18 },
+      };
+      let initValues = currentDetailData == undefined || currentDetailData.length == 0 ? {} :
+            {
+                name:currentDetailData.name,
+                crs:currentDetailData.crs,
+            }
+            
+    form.setFieldsValue(initValues)
+    return (
+        <Modal
+            visible={visible}
+            title="服务详情"
+            onCancel={onCancel}
+            width={800}
+            destroyOnClose={true}
+            onOk={() => {
+                form
+                .validateFields()
+                .then(values => {
+                    form.resetFields();
+                    form.setFieldsValue(values)
+                    submitMap(values);
+                })
+                .catch(info => {
+                    console.log('校验失败:', info);
+                });
+            }}
+        >
+        <Form
+            form={form}
+            {...layout}
+            name="serverDetail"
+            initialValues={initValues}
+        >
+            <Form.Item label="名称" name="name" >
+                <Input/>
+            </Form.Item>
+            <Form.Item label="坐标系信息" name="crs">
+                <Input disabled/>
+            </Form.Item>
+            
+        </Form>
+        </Modal>
+  );
       return(
        <Row >
         <Col>
@@ -107,7 +154,7 @@ const App = () => {
                     <Descriptions.Item label="默认地址">江苏省南京市梅园快递中心</Descriptions.Item>
                     <Descriptions.Item label="余额">20000</Descriptions.Item>
                 </Descriptions>
-                <Button onclick={clickInfo}>余额充值</Button>
+                <Button onclick={CollectionCreateForm}>余额充值</Button>
             </div>
             </Card>
         </Col>
