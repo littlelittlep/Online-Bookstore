@@ -59,6 +59,14 @@ public class addr  {
         System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
+    @PostMapping("/myAddress")
+    @ResponseBody
 
+
+    public List<Map<String, Object>> getAddress(@RequestParam("MemberID") String MemberID) {
+        String addressSQL = "SELECT Address FROM address WHERE MemberID='" + MemberID + "';";
+        List<Map<String, Object>> res = jdbcTemplate.queryForList(addressSQL);
+        return res;
+    }
 }
 
