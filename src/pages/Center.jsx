@@ -101,7 +101,7 @@ const App = () => {
             <Card>
             <div style={{
                 height: 250,width:700}}>
-                <Descriptions title="用户信息" layout="vertical">
+                <Descriptions title="用户信息" layout="horizontal">
                     <Descriptions.Item label="用户名">有钱人</Descriptions.Item>
                     <Descriptions.Item label="联系方式">159763XXXXX</Descriptions.Item>
                     <Descriptions.Item label="默认地址">江苏省南京市梅园快递中心</Descriptions.Item>
