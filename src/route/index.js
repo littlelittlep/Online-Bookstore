@@ -38,17 +38,11 @@ import App from '../App.jsx'
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import RouterProvider from "react-router-dom";
 
 
 const router = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <Home />,
-    // },
     {
         path: "/login",
         element: <Login />,
@@ -83,22 +77,6 @@ const router = createBrowserRouter([
             },
         ],
     },
-    // {
-    //     path: "/book-classification",
-    //     element: <Classification />,
-    // },
-    // {
-    //     path: "/order",
-    //     element: <Order />,
-    // },
-    // {
-    //     path: "/shopcar",
-    //     element: <Shopcar />,
-    // },
-    // {
-    //     path: "/center",
-    //     element: <Center />,
-    // },
     {
         path: "/admin",
         element: <App />,
@@ -117,10 +95,12 @@ const router = createBrowserRouter([
             },
         ],
     }
-]);
+])
 
-export default router
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
 );
+
+export default router
+// export default class routers extends React.Component { router }
