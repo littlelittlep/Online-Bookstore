@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @CrossOrigin
@@ -85,4 +86,30 @@ public class InventoryController {
         System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
+    @PostMapping("/allBooks")
+    @ResponseBody
+    public List<Map<String, Object>> getAllBooks() {
+        String userSQL = "SELECT * FROM inventory" + ";";
+        List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
+        return res;
+    }
+
+    @PostMapping("/certainClassBooks")
+    @ResponseBody
+    //查询特定种类的书籍
+    public List<Map<String, Object>> classBooks(@RequestParam("ClassID") String classID) {
+        String userSQL = "SELECT * FROM inventory WHERE ClassID='" + classID+"';";
+        List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
+        return res;
+    }
+
+    @PostMapping("/oneBook")
+    @ResponseBody
+    //查询某本书的信息
+    public List<Map<String, Object>> oneBook(@RequestParam("BookID") String bookID) {
+        String userSQL = "SELECT * FROM inventory WHERE BookID='" + bookID+"';";
+        List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
+        return res;
+    }
+
 }
