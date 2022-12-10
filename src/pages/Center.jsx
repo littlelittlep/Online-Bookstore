@@ -1,112 +1,138 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, InputNumber, Row,Space,Col,Card,Menu, Avatar, List, message,Divider} 
+import { Button,  Row,Space,Col,Card,Menu, Avatar, List, message,Divider,Descriptions,Table,Tag} 
 from 'antd';
-import VirtualList from 'rc-virtual-list';
+
 const fakeDataUrl =
   'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
 const ContainerHeight = 400;
 const { Meta } = Card;
-const style = {
-    background: '#fff',
-    padding: '7px 0',
-    textAlign:'center'
-  };
-const gridStyle= {
-    width: '50%',
-    textAlign: 'center',
-    height:20,
-    verticalAlign:'middle'
-};
-const items = [
+const data = [
     {
-        label: '所有书籍',
+      key: '1',
+      name: 'John Brown',
+    //   age: 32,
+      address: 'New York No. 1 Lake Park',
+      tags: ['默认地址'],
     },
     {
-        label: '分类书籍',
+      key: '2',
+      name: 'Jim Green',
+    //   age: 42,
+      address: 'London No. 1 Lake Park',
+      tags: [],
     },
     {
-        label: '个人中心',
+      key: '3',
+      name: 'Joe Black',
+    //   age: 32,
+      address: 'Sidney No. 1 Lake Park',
+      tags: [],
     },
-];
+    {
+        key: '4',
+        name: 'Joe Black',
+      //   age: 32,
+        address: 'Sidney No. 1 Lake Park',
+        tags: [],
+      },
+      {
+        key: '5',
+        name: 'Joe Black',
+      //   age: 32,
+        address: 'Sidney No. 1 Lake Park',
+        tags: [],
+      },
+  ];
+  const columns = [
+    {
+      title: '收货人',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
+    },
+    // {
+    //   title: 'Age',
+    //   dataIndex: 'age',
+    //   key: 'age',
+    // },
+    {
+      title: '收货地址',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: '是否为默认地址',
+      key: 'tags',
+      align: 'center',
+      dataIndex: 'tags',
+      render: (_, { tags }) => (
+        <>
+          {tags.map((tag) => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'loser') {
+              color = 'volcano';
+            }
+            return (
+              <Tag color={color} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      ),
+    },
+    {
+        title: <Button type="primary" style={{fontWeight:"bolder"}}>新增地址</Button>,
+        key: 'action',
+        align: 'center',
+        render: (_, record) => (
+          <Space size="middle">
+            <Button type="text">删除地址</Button>
+          </Space>
+        ),
+      },
+    ];
+const clickInfo = (e) => {
+}
 const App = () => {
-    const [data, setData] = useState([]);
-    const appendData = () => {
-        fetch(fakeDataUrl)
-          .then((res) => res.json())
-          .then((body) => {
-            setData(data.concat(body.results));
-            message.success(`${body.results.length} more items loaded!`);
-          });
-      };
-      useEffect(() => {
-        appendData();
-      }, []);
-      const onScroll = (e) => {
-        if (e.currentTarget.scrollHeight - e.currentTarget.scrollTop === ContainerHeight) {
-          appendData();
-        }
-      };
       return(
        <Row >
-        <Col flex={500}>
+        <Col>
+            <Card>
             <div style={{
-                height: 250}}>
-                <h4 fontWeifht="bold">用户信息</h4>
+                height: 250,width:700}}>
+                <Descriptions title="用户信息" layout="vertical">
+                    <Descriptions.Item label="用户名">有钱人</Descriptions.Item>
+                    <Descriptions.Item label="联系方式">159763XXXXX</Descriptions.Item>
+                    <Descriptions.Item label="默认地址">江苏省南京市梅园快递中心</Descriptions.Item>
+                    <Descriptions.Item label="余额">20000</Descriptions.Item>
+                </Descriptions>
+                <Button onclick={clickInfo}>余额充值</Button>
             </div>
-            <div style={{
-                height: 300}}>
-                <h4 fontWeifht="bold">物流详情</h4>
-                <List style={{
-                height: 300}}>
-                <VirtualList
-                    data={data}
-                    height={250}
-                    itemHeight={47}
-                    itemKey="email"
-                    onScroll={onScroll}
-                >
-                    {(item) => (
-                    <List.Item key={item.email} >
-                        <List.Item.Meta
-                        avatar={<Avatar shape="square" size={64} src={item.picture.large} />}
-                        title={<a href="https://ant.design">{item.name.last}</a>}
-                        description={item.email}
-                        />
-                        <Button>确认收货</Button>
-                    </List.Item>
-                    )}
-                </VirtualList>
-                </List>
-            </div>
+            </Card>
         </Col>
-        <Col  flex={1} style={{marginTop:30}}>
-            <Row style={{height:15}}></Row>
-                <Row>
+        <Col>
+            <Row style={{marginTop:10}}></Row>
+            <Row>
                     <Card
                         hoverable="true"
                         style={{
-                        height:350,
-                        width: 280,
-                        marginLeft:20
+                        height:300,
+                        width:200,
+                        marginLeft:20,
+                        marginRight:0
                         }}
                         cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"  />}
                     >
                     </Card>
             </Row>
-            <div style={{width:280,marginLeft:20}}>
-            <Card >
-                <Card.Grid style={gridStyle}>我的发票</Card.Grid>
-                <Card.Grid style={gridStyle}>我的积分</Card.Grid>
-                <Card.Grid style={gridStyle}>我的足迹</Card.Grid>
-                <Card.Grid style={gridStyle}>我的收藏</Card.Grid>
-                <Card.Grid style={gridStyle}>买过店铺</Card.Grid>
-                <Card.Grid style={gridStyle}>收藏店铺</Card.Grid>
-                {/* <Card.Grid style={gridStyle}>退款维权</Card.Grid>
-                <Card.Grid style={gridStyle}>退款维权</Card.Grid> */}
-            </Card>
-            </div>
         </Col>
-    </Row>
+        <Row>
+            {/* <Card style={{marginTop:20,height: 250,width:980}}> */}
+                <Table  columns={columns} dataSource={data} scroll={{y:200,}} style={{marginTop:20,height: 250,width:970}}/>
+            {/* </Card> */}
+        </Row>
+        </Row>
     );
 }
 

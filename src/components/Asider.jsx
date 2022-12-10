@@ -8,28 +8,28 @@ import {
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from "react-router-dom";
 
-const MyMenu=styled(Menu)`
-    &.ant-menu-dark {
-        background:#1A8CFF;
-    }
-    &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
-        background:#1A8CFF;
-    }
-    &.ant-menu-submenu-selected > .ant-menu-submenu-title {
-        position: relative;
-    }
-    &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inlin{
-        background:#1A8CFF;
-    }
-    &.ant-menu-submenu-selected > .ant-menu-submenu-title:before {
-        width: 4px;
-        height: 20px;
-        position: absolute;
-        content: "";
-        left: 0;
-        background: black;
-  }
-`;
+// const MyMenu=styled(Menu)`
+//     &.ant-menu-dark {
+//         background:#1A8CFF;
+//     }
+//     &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
+//         background:#1A8CFF;
+//     }
+//     &.ant-menu-submenu-selected > .ant-menu-submenu-title {
+//         position: relative;
+//     }
+//     &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inlin{
+//         background:#1A8CFF;
+//     }
+//     &.ant-menu-submenu-selected > .ant-menu-submenu-title:before {
+//         width: 4px;
+//         height: 20px;
+//         position: absolute;
+//         content: "";
+//         left: 0;
+//         background: black;
+//   }
+// `;
 
 const items = [[
     {
@@ -84,7 +84,7 @@ const items = [[
 export default function Asider() {
     // const location = useLocation()
     const navigate = useNavigate()
-    const auth = localStorage.getItem("auth");//获取用户类型，登录时已经本地存储 
+    //const auth = localStorage.getItem("auth");//获取用户类型，登录时已经本地存储 
     // let temp = items[auth][0].key
     // const [defaultkey, setdefaultkey] = useState(temp)
     // // setdefaultkey(temp)
@@ -104,31 +104,32 @@ export default function Asider() {
     // };
     const clickMenu = (e) => {
         console.log(e.key);
-        if (localStorage.getItem("auth") == 0) {
+        //if (localStorage.getItem("auth") == 0) {
             if (e.key == 1) {
                 navigate('/books')
             } else if (e.key == 2) {
                 navigate('/book-classification')
             } else if (e.key == 4) {
-                navigate('/order')
-            } else if (e.key == 5) {
                 navigate('/shopcar')
+            } else if (e.key == 5) {
+                navigate('/order')
             } else if (e.key == 6) {
+                console.log("6")
                 navigate('/center')
             }
-        } else {
-            if (e.key == 1) {
-                navigate('/admin/book-list')
-            } else if (e.key == 2) {
-                navigate('/admin/order-list')
-            } else if (e.key == 3) {
-                navigate('/admin/user-list')
-            }
-        }
+        //} else {
+            // if (e.key == 1) {
+            //     navigate('/admin/book-list')
+            // } else if (e.key == 2) {
+            //     navigate('/admin/order-list')
+            // } else if (e.key == 3) {
+            //     navigate('/admin/user-list')
+            // }
+        //}
 
     }
     return (
-        <MyMenu 
+        <Menu 
             onClick={clickMenu}
             style={{
                 width: 185,

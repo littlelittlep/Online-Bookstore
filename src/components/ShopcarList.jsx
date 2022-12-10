@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button,Card,Row,Col,Avatar} from 'antd';
-import { IeSquareFilled } from '@ant-design/icons';
-const order = [{name:"数据库原理",num:20,price:"28"},{name:"操作系统",num:2,price:"50"}];
-const onChange = (value) => {
-    console.log('changed', value);
-  };
-const cancelOrder = (value) => {
-    
-  };
+import { Button,Card,Row,Col,Avatar,InputNumber,Form} from 'antd';
+const order = [{ID:"1",name:"数据库原理",price:"28"},{ID:"2",name:"操作系统",price:""}];
+const clickOrder=(value)=>{
+    console.log("666")
+};
+// const onChange = (value) => {
+//     console.log('changed', value);
+//     num=this.value;
+//   };
 const App = () => (
     order.map((item,index) =>(
         // items.map(item=>(
@@ -40,12 +40,20 @@ const App = () => (
                     <Col flex={500}>
                     </Col>
                     <Col flex={1}>
-                        <h4 style={{marginLeft:29,marginTop:0}}>单价：￥{item.price}</h4>
-                        <h4>购买数量： {item.num} 本</h4>
-                        <h4 style={{marginLeft:29}}>总额：￥{item.price}</h4>
+                        <h4>单价：￥{item.price}</h4>
                     </Col>
-                    <Col flex={50}>
-                        <Button style={{marginLeft:50,marginTop:30}} onClick={cancelOrder(item.ID)}>取消订单</Button>
+                    <Col flex={1}>
+                            <Form style={{marginTop:15,marginLeft:20}}>
+                                <Row>
+                                <InputNumber size="middle" min={1} max={100000} defaultValue={1}/></Row>
+                                <Row>
+                                <Button style={{marginTop:15,marginLeft:10}} onclick={clickOrder(item.ID)}>下单</Button></Row>
+                            </Form>
+                    </Col>
+                    <Col flex={100} justify="right">
+                    </Col>
+                    <Col flex={1}>
+                        <h4>总额：￥{item.price}</h4>
                     </Col>
                 </Row>
             </Card>

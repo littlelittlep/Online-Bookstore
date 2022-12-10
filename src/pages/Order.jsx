@@ -4,7 +4,7 @@ import { IeSquareFilled } from '@ant-design/icons';
 import Oderlist from '../components/OrderLists.jsx'
 const App = () => (
 // 外层购物车卡片
-   <Card title="购物车" style={{ background: "#D6D6D8", }}>
+   <Card title="订单" style={{ background: "#D6D6D8", }}>
        <Oderlist/>
     </Card>
 );

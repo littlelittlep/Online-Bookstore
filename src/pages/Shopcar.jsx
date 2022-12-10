@@ -1,8 +1,11 @@
 import React from 'react';
-import { Button, Space } from 'antd';
+import { Button, Space,Card,Row,Col,Avatar, } from 'antd';
+import { IeSquareFilled } from '@ant-design/icons';
+import ShopcarList from '../components/ShopcarList.jsx'
 const App = () => (
-    <Space wrap>
-        <Button type="primary">这里是购物车</Button>
-    </Space>
+// 外层购物车卡片
+   <Card title="购物车" style={{ background: "#D6D6D8", }}>
+       <ShopcarList/>
+   </Card>
 );
 export default App;
