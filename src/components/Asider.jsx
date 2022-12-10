@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from 'antd';
-import styled from 'styled-components';
 import {
     AppstoreAddOutlined, SolutionOutlined, BookOutlined,
     CaretDownOutlined, UserOutlined, ShoppingCartOutlined,
@@ -84,7 +83,7 @@ const items = [[
 export default function Asider() {
     // const location = useLocation()
     const navigate = useNavigate()
-    //const auth = localStorage.getItem("auth");//获取用户类型，登录时已经本地存储 
+    const auth = localStorage.getItem("auth");//获取用户类型，登录时已经本地存储 
     // let temp = items[auth][0].key
     // const [defaultkey, setdefaultkey] = useState(temp)
     // // setdefaultkey(temp)
@@ -104,7 +103,7 @@ export default function Asider() {
     // };
     const clickMenu = (e) => {
         console.log(e.key);
-        //if (localStorage.getItem("auth") == 0) {
+        if (localStorage.getItem("auth") == 0) {
             if (e.key == 1) {
                 navigate('/books')
             } else if (e.key == 2) {
@@ -117,19 +116,19 @@ export default function Asider() {
                 console.log("6")
                 navigate('/center')
             }
-        //} else {
-            // if (e.key == 1) {
-            //     navigate('/admin/book-list')
-            // } else if (e.key == 2) {
-            //     navigate('/admin/order-list')
-            // } else if (e.key == 3) {
-            //     navigate('/admin/user-list')
-            // }
-        //}
+        } else {
+            if (e.key == 1) {
+                navigate('/admin/book-list')
+            } else if (e.key == 2) {
+                navigate('/admin/order-list')
+            } else if (e.key == 3) {
+                navigate('/admin/user-list')
+            }
+        }
 
     }
     return (
-        <Menu 
+        <Menu
             onClick={clickMenu}
             style={{
                 width: 185,
@@ -138,8 +137,8 @@ export default function Asider() {
             className="aside"
             mode="inline"
             theme="dark"
-            //items={items[auth]}//0学生1教师2教务处
-            items={items[0]}//调试用
+            items={items[auth]}//0学生1教师2教务处
+        // items={items[0]}//调试用
         />
     );
 }
