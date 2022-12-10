@@ -48,7 +48,6 @@ public class LoginController  {
         }else{
             return "2";//密码错误
         }
-
     }
 }
 
