@@ -43,12 +43,8 @@ public class LoginController  {
         if (userList.isEmpty()){
             return "0";//用户不存在
         }else if(userList.get(0).getPassword().equals(password)){
-<<<<<<< HEAD
-            return "1";//登陆成功
-=======
             if(isAdmin[0])return "4";//管理员
             else return "1";//登陆成功,普通用户
->>>>>>> 14410bcd4a24c6629fc4e82a492f914683dadc3e
         }else{
             return "2";//密码错误
         }
