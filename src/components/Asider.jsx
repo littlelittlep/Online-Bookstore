@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from 'antd';
+import styled from 'styled-components';
 import {
     AppstoreAddOutlined, SolutionOutlined, BookOutlined,
     CaretDownOutlined, UserOutlined, ShoppingCartOutlined,
@@ -7,6 +8,28 @@ import {
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from "react-router-dom";
 
+const MyMenu=styled(Menu)`
+    &.ant-menu-dark {
+        background:#1A8CFF;
+    }
+    &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline{
+        background:#1A8CFF;
+    }
+    &.ant-menu-submenu-selected > .ant-menu-submenu-title {
+        position: relative;
+    }
+    &.ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inlin{
+        background:#1A8CFF;
+    }
+    &.ant-menu-submenu-selected > .ant-menu-submenu-title:before {
+        width: 4px;
+        height: 20px;
+        position: absolute;
+        content: "";
+        left: 0;
+        background: black;
+  }
+`;
 
 const items = [[
     {
@@ -44,8 +67,6 @@ const items = [[
 ], [
 
 ]]
-
-
 export default function Asider() {
     // const location = useLocation()
     const navigate = useNavigate()
@@ -82,17 +103,17 @@ export default function Asider() {
         }
     }
     return (
-        <Menu
+        <MyMenu 
             onClick={clickMenu}
             style={{
                 width: 185,
-                minHeight: 600
+                minHeight: 600,
             }}
             className="aside"
             mode="inline"
             theme="dark"
-            items={items[auth]}//0学生1教师2教务处
-        // items={items[0]}//调试用
+            //items={items[auth]}//0学生1教师2教务处
+            items={items[0]}//调试用
         />
     );
 }

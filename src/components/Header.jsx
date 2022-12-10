@@ -1,11 +1,12 @@
 import React from 'react';
 import { AppstoreAddOutlined, SolutionOutlined, BookOutlined, CaretDownOutlined, UserOutlined, ShoppingCartOutlined, TransactionOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme, Dropdown, Space, Divider, message } from 'antd';
-import logoImg from '../assets/pic1.jpg';
+import logoImg from '../assets/logoko.png';
 import avatar from '../assets/defaultAvatar.png'
 import { useNavigate } from 'react-router-dom'
 import '../pages/less/Home.less'
 import Books from '../pages/Books.jsx'
+import CenterForm from '../pages/Center'
 const { Header, Content, Sider } = Layout;
 
 const App = () => {
@@ -18,12 +19,17 @@ const App = () => {
         message.success('退出成功，即将返回登录页')
         setTimeout(() => { navigate('/login') }, 500)
     }
+    const modify=()=>{
+
+        //message.success('退出成功，即将返回登录页')
+        setTimeout(() => { navigate('/center') }, 500)
+    }
     const itemDropdown = (
         <Menu
             items={[
                 {
                     label: (
-                        '修改资料'
+                        <span onClick={modify}>修改资料</span>
                     ),
                 },
                 {
@@ -43,7 +49,7 @@ const App = () => {
         <Layout>
             <header>
                 <div className="logo">
-                    <img src={logoImg} alt="" style={{ width: 150, height: 50 }} className="logoimg" />
+                    <img src={logoImg} alt=""  className="logoimg" />
                 </div>
                 <div className="right">
                     <Dropdown overlay={itemDropdown}>

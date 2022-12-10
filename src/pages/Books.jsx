@@ -1,16 +1,15 @@
 import React from 'react';
 import { Button, Space, Avatar, Card } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { EditOutlined, EllipsisOutlined, SettingOutlined, DownloadOutlined} from '@ant-design/icons';
 const { Meta } = Card;
-
-const bookName = ["数据库原理", "计算机网络", "数据结构", "算法设计", "编译原理", "操作系统", "程序设计基础", "大数据处理", "云计算", "数据挖掘"]
+const bookName = ["数据库原理","操作系统"]
 const App = () => (
     <Space size={[16, 16]} wrap >
-        {new Array(10).fill(null).map((_, index) => (
+        {bookName.map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Card
+            <Card hoverable={true}
                 style={{
-                    width: 290,
+                    width: 200,
                 }}
                 cover={
                     <img
@@ -19,15 +18,14 @@ const App = () => (
                     />
                 }
                 actions={[
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
+                    <Button type="link">购物车</Button>,
+                    <Button type="link">详情</Button>,
                 ]}
             >
                 <Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                    // avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
                     title={bookName[index]}
-                    description="This is the description"
+                    description="价格"
                 />
             </Card>
         ))}
