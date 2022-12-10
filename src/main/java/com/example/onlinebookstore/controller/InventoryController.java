@@ -75,4 +75,14 @@ public class InventoryController {
         jdbcTemplate.execute(sql);
         return "1";     //更新成功
     }
+    @PostMapping("/deleteBook")
+    @ResponseBody
+    public void deleteBook(@RequestParam("BookID") String bookID){
+
+
+        String deleteSQL = "DELETE FROM inventory WHERE BookID='"
+                + bookID + "';";
+        System.out.println(deleteSQL);
+        jdbcTemplate.execute(deleteSQL);
+    }
 }
