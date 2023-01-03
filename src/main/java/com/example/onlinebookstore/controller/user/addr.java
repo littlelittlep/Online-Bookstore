@@ -37,7 +37,7 @@ public class addr  {
         });
         if (addrList.isEmpty()){
             String insertSQL = "INSERT INTO address Values( "
-                    +"\'"+ memberID + "\'" + ", " + "\'" +  address +"\'" + ")";
+                    +"\'"+ memberID + "\'" + ", " + "\'" +  address +"\'" + ",0)";
 
             System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
@@ -64,7 +64,7 @@ public class addr  {
 
 
     public List<Map<String, Object>> getAddress(@RequestParam("MemberID") String MemberID) {
-        String addressSQL = "SELECT Address FROM address WHERE MemberID='" + MemberID + "';";
+        String addressSQL = "SELECT * FROM address WHERE MemberID='" + MemberID + "';";
         List<Map<String, Object>> res = jdbcTemplate.queryForList(addressSQL);
         return res;
     }

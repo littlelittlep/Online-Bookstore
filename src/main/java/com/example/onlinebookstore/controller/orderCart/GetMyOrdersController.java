@@ -20,7 +20,8 @@ public class GetMyOrdersController {
     @PostMapping("/order/myOrders")
     @ResponseBody
     public List<Map<String, Object>> getOrders(@RequestParam("MemberID") String MemberID) {
-        String sql_query="SELECT * FROM orders WHERE MemberID='"+MemberID+"' and OrderState=1;";
+        String sql_query="SELECT * FROM orders,inventory WHERE orders.BookID=inventory.BookID" +
+                " AND orders.MemberID='"+MemberID+"' AND orders.OrderState=1;";
         List<Map<String, Object>> res = jdbcTemplate.queryForList(sql_query);
         return res;
     }
