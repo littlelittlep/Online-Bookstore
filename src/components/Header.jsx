@@ -19,22 +19,19 @@ const App = () => {
         message.success('退出成功，即将返回登录页')
         setTimeout(() => { navigate('/login') }, 500)
     }
-    const modify=()=>{
+    // const modify=()=>{
 
-        //message.success('退出成功，即将返回登录页')
-        setTimeout(() => { navigate('/center') }, 500)
-    }
+    //     //message.success('退出成功，即将返回登录页')
+    //     setTimeout(() => { navigate('/center') }, 500)
+    // }
     const itemDropdown = (
         <Menu
             items={[
-                {
-                    label: (
-                        <span onClick={modify}>修改资料</span>
-                    ),
-                },
-                {
-                    type: Divider
-                },
+                // {
+                //     label: (
+                //         <span onClick={modify}>修改资料</span>
+                //     ),
+                // },
                 {
                     label: (
                         <span onClick={logout}>退出登录</span>
@@ -49,7 +46,7 @@ const App = () => {
         <Layout>
             <header>
                 <div className="logo">
-                    <img src={logoImg} alt=""  className="logoimg" />
+                    <img src={logoImg} alt="" className="logoimg" />
                 </div>
                 <div className="right">
                     <Dropdown overlay={itemDropdown}>
