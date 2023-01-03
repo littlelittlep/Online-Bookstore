@@ -86,10 +86,11 @@ public class InventoryController {
         System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
+
     @PostMapping("/allBooks")
     @ResponseBody
     public List<Map<String, Object>> getAllBooks() {
-        String userSQL = "SELECT * FROM inventory" + ";";
+        String userSQL = "SELECT * FROM inventory,class WHERE inventory.ClassID=class.ClassID;";
         List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
         return res;
     }
@@ -98,7 +99,8 @@ public class InventoryController {
     @ResponseBody
     //查询特定种类的书籍
     public List<Map<String, Object>> classBooks(@RequestParam("ClassID") String classID) {
-        String userSQL = "SELECT * FROM inventory WHERE ClassID='" + classID+"';";
+        String userSQL = "SELECT * FROM inventory,class WHERE inventory.ClassID=class.ClassID" +
+                " AND inventory.ClassID='" + classID+"';";
         List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
         return res;
     }
@@ -107,7 +109,8 @@ public class InventoryController {
     @ResponseBody
     //查询某本书的信息
     public List<Map<String, Object>> oneBook(@RequestParam("BookID") String bookID) {
-        String userSQL = "SELECT * FROM inventory WHERE BookID='" + bookID+"';";
+        String userSQL = "SELECT * FROM inventory,class WHERE inventory.ClassID=class.ClassID " +
+                "AND inventory.BookID='" + bookID+"';";
         List<Map<String, Object>> res = jdbcTemplate.queryForList(userSQL);
         return res;
     }
