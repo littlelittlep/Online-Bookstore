@@ -102,7 +102,6 @@ export default function Asider() {
     //     navigate('/' + e.key)
     // };
     const clickMenu = (e) => {
-        console.log(e.key);
         if (localStorage.getItem("auth") == 0) {
             if (e.key == 1) {
                 navigate('/books')
@@ -113,7 +112,6 @@ export default function Asider() {
             } else if (e.key == 5) {
                 navigate('/order')
             } else if (e.key == 6) {
-                console.log("6")
                 navigate('/center')
             }
         } else {
@@ -137,7 +135,7 @@ export default function Asider() {
             className="aside"
             mode="inline"
             theme="dark"
-            items={items[auth]}//0学生1教师2教务处
+            items={items[auth]}//0普通用户1admin
         // items={items[0]}//调试用
         />
     );
