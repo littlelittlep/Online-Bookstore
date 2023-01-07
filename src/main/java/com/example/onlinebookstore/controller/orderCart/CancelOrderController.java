@@ -32,10 +32,6 @@ public class CancelOrderController {
             if (entry.getKey().equals("MemberID")) memberID = entry.getValue().toString();
             if (entry.getKey().equals("BookID")) bookID = entry.getValue().toString();
         }
-        System.out.println(totalPrice);
-        System.out.println(orderNum);
-        System.out.println(memberID);
-        System.out.println(bookID);
         String sql_orders_update = "UPDATE orders SET OrderState=0 WHERE OrderID="+orderID+";";
         jdbcTemplate.execute(sql_orders_update);
         String sql_inventory_update = "BEGIN;\n" +

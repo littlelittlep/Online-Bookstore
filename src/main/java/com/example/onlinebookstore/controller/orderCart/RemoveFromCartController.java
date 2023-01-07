@@ -19,7 +19,6 @@ public class RemoveFromCartController {
     public void removeFromCart(@RequestParam("OrderID") String orderID){
         String deleteSQL = "DELETE FROM orders WHERE OrderID="
                 + orderID + ";";
-        System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
 }

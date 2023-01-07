@@ -35,7 +35,6 @@ public class InventoryController {
                           @RequestParam("BookPicture") String bookPicture,
                           @RequestParam("BookNote") String bookNote) {
         String sql = "SELECT * FROM inventory WHERE BookID="+"\'"+bookID+"\'";
-//        System.out.println(sql);
         List<Inventory> inventoryList = jdbcTemplate.query(sql, new RowMapper<Inventory>() {
             Inventory inventory = null;
 
@@ -53,7 +52,6 @@ public class InventoryController {
                     bookRemainNum + ", " +"\'" + bookShelfTime +"\'" + ", " +"\'" + bookReleaseTime +"\'" + "," + bookActive +
                     ", " + "\'" +  bookPicture +"\'" + ", " + "\'" +  bookNote +"\'" + ")";
 
-            System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
             return "1"; //添加成功
         }
@@ -72,7 +70,6 @@ public class InventoryController {
                 "SELECT BookRemainNum From inventory WHERE BookID="+"\'"+bookID+"\'"+";\n" +
                 "UPDATE Inventory SET BookRemainNum=BookRemainNum+" + addNumber + " WHERE BookID="+"\'"+bookID+"\'"+";\n" +
                 "COMMIT;";
-        System.out.println(sql);
         jdbcTemplate.execute(sql);
         return "1";     //更新成功
     }
@@ -83,7 +80,6 @@ public class InventoryController {
 
         String deleteSQL = "DELETE FROM inventory WHERE BookID='"
                 + bookID + "';";
-        System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
 

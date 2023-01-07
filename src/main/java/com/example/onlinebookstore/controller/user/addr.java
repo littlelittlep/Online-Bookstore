@@ -39,7 +39,6 @@ public class addr  {
             String insertSQL = "INSERT INTO address Values( "
                     +"\'"+ memberID + "\'" + ", " + "\'" +  address +"\'" + ",0)";
 
-            System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
             return "1"; //添加地址成功
         }
@@ -56,7 +55,6 @@ public class addr  {
         String deleteSQL = "DELETE FROM address WHERE MemberID='"
                 + memberID + "'AND Address ='"+address+"';";
 
-        System.out.println(deleteSQL);
         jdbcTemplate.execute(deleteSQL);
     }
     @PostMapping("/myAddress")

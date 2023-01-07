@@ -45,7 +45,6 @@ public class RegisterController {
                     +"\'"+ memberID + "\'" + ", " + "\'" + password +"\'" + ", " +"\'" +
                     memberName +"\'" + ", " + "0" + "," + "0" +")";
 
-            System.out.println(insertSQL);
             jdbcTemplate.execute(insertSQL);
             return "1";//注册成功
         }

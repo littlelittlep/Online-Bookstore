@@ -29,7 +29,6 @@ public class updateUserInfo  {
                 "SELECT Balance From users WHERE MemberID="+"\'"+memberID+"\'"+";\n" +
                 "UPDATE users SET Balance = Balance+" + addBalance + " WHERE MemberID="+"\'"+memberID+"\'"+";\n" +
                 "COMMIT;";
-        System.out.println(updateSQL);
         jdbcTemplate.execute(updateSQL);
     }
 }
