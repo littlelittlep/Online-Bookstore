@@ -32,3 +32,15 @@ export const AddAddrApi = (params) => request.post('/addAddr', params)
 export const UserInfoApi = (params) => request.post('/userInfo', params)
 //余额充值
 export const UpdateUserInfoApi = (params) => request.post('/updateUserInfo', params)
+//管理员增加书籍
+export const AddBookApi = (params) => request.post('/inventory/addBook', params)
+//管理员增加库存
+export const UpdateRemainApi = (params) => request.post('/inventory/updateRemain', params)
+//管理员删除书籍
+export const DeleteBookApi = (params) => request.post('/inventory/deleteBook', params)
+//查询所有用户
+export const GetAllUsersApi = (params) => request.post('/getAllUsers', params)
+//查询所有订单
+export const GetAllOrdersApi = (params) => request.post('/order/orders', params)
+//管理员取消订单
+export const DeleteOrderApi = (params) => request.post('/inventory/cancelOrder', params)

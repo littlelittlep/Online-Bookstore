@@ -3,7 +3,7 @@ import axios from 'axios'
 // 配置项
 const axiosOption = {
     // baseURL: '',
-    baseURL: 'http://127.0.0.1:8080',
+    baseURL: 'https://1c3466a5-66f8-4e0e-9337-921dd91b2181.mock.pstmn.io',
     timeout: 5000
 }
 
