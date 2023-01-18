@@ -43,4 +43,4 @@ export const GetAllUsersApi = (params) => request.post('/getAllUsers', params)
 //查询所有订单
 export const GetAllOrdersApi = (params) => request.post('/order/orders', params)
 //管理员取消订单
-export const DeleteOrderApi = (params) => request.post('/inventory/cancelOrder', params)
+export const DeleteOrderApi = (params) => request.post('/order/cancelOrder', params)
