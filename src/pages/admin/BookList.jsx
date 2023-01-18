@@ -92,36 +92,8 @@ const layout = {
     },
   };
 export default function App() {
-  const data=[
-    {
-      "BookID": "ISBN 978-23452",
-      "BookName": "数据库系统教程",
-      "BookAuthor": "王能斌",
-      "ClassName": "计算机",
-      "BookPrice": "34",
-      "BookSoldNum": "500",
-      "BookRemainNum": "205",
-      "BookShelfTime": "2014-2",
-      "BookReleaseTime": "2008-5",
-      "BookActive": "1",
-      "BookNote": "good"
-  },
-    {
-        "BookID": "ISBN 979-...",
-        "BookName": "数据仓库",
-        "BookAuthor": "徐立臻",
-        "ClassName": "计算机",
-        "BookPrice": "30",
-        "BookSoldNum": "500",
-        "BookRemainNum": "205",
-        "BookShelfTime": "2014-2",
-        "BookReleaseTime": "2008-5",
-        "BookActive": "1",
-        "BookNote": "good"
-    }
-]
     //表格数据
-    const [tableData,setTableData]=useState(data);
+    const [tableData,setTableData]=useState();
     //modal状态
     const [visible,setVisible]=useState(false);
     const [form] = Form.useForm();
@@ -277,9 +249,11 @@ export default function App() {
             BookName:values.BookName,
             BookAuthor:values.BookAuthor,
             ClassID:values.ClassID,
+            BookPrice:values.BookPrice,
             BookSoldNum:values.BookSoldNum,
             BookRemainNum:values.BookRemainNum,
             BookShelfTime:values.BookShelfTime,
+            BookReleaseTime:values.BookReleaseTime,
             BookActive:values.BookActive,
             BookPicture:values.BookPicture,
             BookNote:values.BookNote
@@ -299,12 +273,11 @@ export default function App() {
     }
     //加载图书表格数据
     useEffect(()=>{
-        // setTableData(data);
-        // AllBooksApi().then(res => {
-        //     if(res){
-        //         setTableData(res);
-        //     }
-        // })
+        AllBooksApi().then(res => {
+            if(res){
+                setTableData(res);
+            }
+        })
     },[]);
     return (    
         <>
