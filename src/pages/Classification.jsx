@@ -8,17 +8,17 @@ const { Meta } = Card;
 
 const items = [
     {
-        label: '计算机类',
+        label: '计算机科学',
         key: '9',
         icon: <FilePdfOutlined />,
     },
     {
-        label: '哲学类',
+        label: '哲学',
         key: '2',
         icon: <FilePdfOutlined />,
     },
     {
-        label: '文史类',
+        label: '文学',
         key: '3',
         icon: <FilePdfOutlined />,
     },

@@ -88,7 +88,7 @@ export default function App() {
                                 </Col>
                                 {/* 地址选择 */}
                                 <Col flex={200}>
-                                    <p>收获地址：{item.Address}</p>
+                                    <p>收货地址：{item.Address}</p>
                                 </Col>
                                 {/* 单价 */}
                                 <Col flex={1}>
